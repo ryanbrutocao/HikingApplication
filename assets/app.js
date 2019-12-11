@@ -149,11 +149,11 @@ $("#hikeSearchBtn").on("click", function (event) {
         mapResults;
         // storing the data from the AJAX request in the results variable
         var mapResults = response.features
-        console.log(mapResults);
+        // console.log(mapResults);
         var addressLongitude = mapResults[0].center[0];
         var addressLatitude = mapResults[0].center[1];
-        console.log("Address Input Longitude: ", addressLongitude);
-        console.log("Address Input Latitude: ", addressLatitude);
+        // console.log("Address Input Longitude: ", addressLongitude);
+        // console.log("Address Input Latitude: ", addressLatitude);
 
         var addressGeo = {
           addressLatitude: addressLatitude,
@@ -168,8 +168,8 @@ $("#hikeSearchBtn").on("click", function (event) {
       // setting variables from Firebase values that we can use for our hiking API call      
       firebaseAddressLatitude = childSnapshot.val().addressLatitude;
       firebaseAddressLongitude = childSnapshot.val().addressLongitude;
-      console.log(firebaseAddressLatitude);
-      console.log(firebaseAddressLongitude);
+      // console.log(firebaseAddressLatitude);
+      // console.log(firebaseAddressLongitude);
 
       // sets the variables and collects their values
       var lat = firebaseAddressLatitude;
@@ -188,8 +188,6 @@ $("#hikeSearchBtn").on("click", function (event) {
       var minStarsSearch = "&minStars=" + minStars
 
       var queryURL = "https://www.hikingproject.com/data/get-trails?" + latSearch + lonSearch + minDistanceSearch + searchNumSearch + maxDistanceSearch + minStarsSearch + "&key=200539534-e303f9de12af6752f80ed195ba310625"
-      // console.log(queryURL);
-      // console.log(minStarsSearch);
 
 
       // Perfoming an AJAX GET request to our queryURL
@@ -200,10 +198,6 @@ $("#hikeSearchBtn").on("click", function (event) {
         .then(function (response) {
           // storing the data from the AJAX request in the results variable
           var results = response.trails;
-
-          // console.log(queryURL);
-          // console.log(response);
-          // console.log(results);
 
           // Looping through each result item
           for (var i = 0; i < results.length; i++) {
@@ -275,19 +269,13 @@ $("#hikeSearchBtn").on("click", function (event) {
                 trail_condition_status: trailConditionStatus,
                 trail_condition_details: trailConditionDetails,
                 trail_condition_date: trailConditionDate
-
               };
 
               //uploads data to firebase database
 
-              database.ref("trail_info").push(hikeData);
-
-              // console.log(maxDistance);
-              // console.log(minDistance);
-              // console.log("trail rating from API: ", trailRating);
-              // console.log(resultsNum);
 
             }
+            database.ref("trail_info").push(hikeData);
           }
 
           //referencing the database and setting the value of the snapshots to a variable

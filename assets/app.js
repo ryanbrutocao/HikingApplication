@@ -111,7 +111,7 @@ $(".hiking-list").on("click", ".item-remove", function (event) {
 // then we do the hiking API call with all values grabbed from Firebase
 // all hiking data is populated onto cards that show in a carousel to the user
 ///////////////////////////////////////////////////////////////////////
-$("#hikeSearch").on("click", function (event) {
+$("#hikeSearchBtn").on("click", function (event) {
   event.preventDefault();
   //////// logging address to Firebase below - on the 'find a hike' click.
 
@@ -121,7 +121,7 @@ $("#hikeSearch").on("click", function (event) {
   zipCode = $("#zip").val().trim();
   address = streetNum + " " + city + " " + state + " " + zipCode;
   if (zipCode.length != 5) {
-    // alert('please enter a 5 digit Zip Code');
+    alert('please enter a 5 digit Zip Code');
     return false;
   }
 
